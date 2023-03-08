@@ -11,7 +11,7 @@ public class UserBean {
 	private String password;
 	private String phone;
 	private String emailId;
-	private Boolean emailVerified;
+	private Boolean emailVerfied;
 	private Timestamp createdOn;
 	
 	public Integer getUserId() {
@@ -57,10 +57,10 @@ public class UserBean {
 		this.emailId = emailId;
 	}
 	public Boolean getEmailVerified() {
-		return emailVerified;
+		return emailVerfied;
 	}
 	public void setEmailVerified(Boolean emailVerified) {
-		this.emailVerified = emailVerified;
+		this.emailVerfied = emailVerified;
 	}
 	public Timestamp getCreatedOn() {
 		return createdOn;
@@ -73,7 +73,7 @@ public class UserBean {
 	public String toString() {
 		return "UserBean [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
 				+ username + ", password=" + password + ", phone=" + phone + ", emailId=" + emailId + ", emailVerified="
-				+ emailVerified + ", createdOn=" + createdOn + "]";
+				+ emailVerfied + ", createdOn=" + createdOn + "]";
 	}
 
 }

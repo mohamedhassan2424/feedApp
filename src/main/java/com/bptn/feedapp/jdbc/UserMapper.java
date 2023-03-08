@@ -20,7 +20,7 @@ class UserMapper implements RowMapper<UserBean>
 		user.setPassword(rs.getString("password"));
 		user.setPhone(rs.getString("phone"));
 		user.setEmailId(rs.getString("emailId"));
-		user.setEmailVerified(rs.getBoolean("emailVerified"));
+		user.setEmailVerified(rs.getBoolean("emailVerfied"));
 		user.setCreatedOn(rs.getTimestamp("createdOn"));
 
 		/* Return the populated UserBean object */
