@@ -27,8 +27,7 @@ class UserMapper implements RowMapper<UserBean>
 		return user;
 	}
 	
-//You only need to update the project when you add new dependency, else you just do maven clean and install.
-	//already installed
+
 
 
 
