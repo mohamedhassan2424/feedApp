@@ -17,6 +17,9 @@ import com.bptn.feedapp.jpa.User;
 
 import java.util.Optional;
 
+
+import java.sql.Timestamp;
+import java.time.Instant;
 @Service
 public class UserService {
 	
@@ -37,5 +40,16 @@ public class UserService {
 	public void createUser(User user) {
 //		this.userDao.createUser(user);
 		this.userRepository.save(user);
+	}
+	public User signup(User user){
+		user.setUsername(user.getUsername().toLowerCase());
+		user.setEmailId(user.getEmailId().toLowerCase());
+		user.setEmailVerified(false);
+		
+		user.setCreatedOn(Timestamp.from(Instant.now()));
+		
+		this.userRepository.save(user);
+		
+		return user;
 	}
 }
