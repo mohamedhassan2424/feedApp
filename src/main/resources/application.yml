@@ -1,29 +1,28 @@
+# Never push this file to Git. As it has sensitive information like DB credentials
+# Port information
 # Tomcat Server Port
-server:
-  port: 8080
-
-  
- # Logger
+# Logger
 logging.level:
   web: DEBUG
-  '[com.bptn.feedapp]': DEBUG
+  '[com.bptn.feedApp]': DEBUG
   
-  # Active Profile
+# Active Profile
 spring:
   profiles:
     active: default
- 
+
 # Banner Text
   banner:
     charset: UTF-8
     location: classpath:/banner/academy.txt
     
-# Jackson Settings
+ # Jackson Settings
   jackson:
     time-zone: America/Toronto
     date-format: "yyyy-MM-dd HH:mm:ss" 
     
-# Common Database Settings
+
+ # Common Database Settings
   sql:
     init:
       continue-on-error: false
@@ -39,7 +38,6 @@ spring:
         '[format_sql]': true        
     hibernate:
       naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-      
       
 ---
 
@@ -59,7 +57,3 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
-      
-      
-      
-      

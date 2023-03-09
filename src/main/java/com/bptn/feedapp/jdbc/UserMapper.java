@@ -20,14 +20,15 @@ class UserMapper implements RowMapper<UserBean>
 		user.setPassword(rs.getString("password"));
 		user.setPhone(rs.getString("phone"));
 		user.setEmailId(rs.getString("emailId"));
-		user.setEmailVerified(rs.getBoolean("emailVerfied"));
+		user.setEmailVerified(rs.getBoolean("emailVerified"));
 		user.setCreatedOn(rs.getTimestamp("createdOn"));
 
 		/* Return the populated UserBean object */
 		return user;
 	}
 	
-
+//You only need to update the project when you add new dependency, else you just do maven clean and install.
+	//already installed
 
 
 
