@@ -3,6 +3,7 @@ package com.bptn.feedapp.controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,6 +25,9 @@ import java.time.Instant;
 import com.bptn.feedapp.jpa.User;
 
 import java.util.Optional;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -85,6 +89,12 @@ public class UserController {
 	public String testController2() {
 		logger.debug("The testController() 2 method was invoked!");
 		return "Trigger test control 2";
+	}
+	
+	@PostMapping("/signup")
+	public User signup(@RequestBody User user) {	
+		logger.debug("Signing up, username: {}", user.getUsername());
+		return this.userService.signup(user);
 	}
 	
 }
