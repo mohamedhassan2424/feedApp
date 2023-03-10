@@ -57,3 +57,18 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
+      
+      
+# Email Settings
+  mail:
+    username: mohamesh648@gmail.com
+    password: wseizrtelfibqspc
+    host: smtp.gmail.com
+    port: 587
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
