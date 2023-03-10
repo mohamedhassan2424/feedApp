@@ -71,6 +71,11 @@ public class UserController {
 		logger.debug("The testController() method was invoked!");
 		return "The FeedApp application is up and running";
 	}
+	@GetMapping("/test")
+	public String testController3() {
+		logger.debug("The testController() method was invoked!");
+		return "The FeedApp application is up and running";
+	}
 	@GetMapping("/signup")
 	public String testController1() {
 		logger.debug("The testController() 1 method was invoked!");
