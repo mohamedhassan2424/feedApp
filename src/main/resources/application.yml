@@ -72,3 +72,47 @@ spring:
           auth: true
           starttls:
             enable: true
+            
+---      
+# Prod Profile
+server:
+  port: 8080
+  
+spring:
+  config:
+    activate:
+      on-profile: prod  
+  
+# Database Settings 
+  datasource:
+    url: jdbc:postgresql://localhost:5432/feedApp
+    username: postgres
+    password: pg123
+    hikari:
+      maximum-pool-size: 2
+  jpa:
+    hibernate:
+      ddl-auto: validate
+      
+      
+---
+# Test Profile
+    
+spring:
+  config:
+    activate:
+      on-profile: test  
+  
+# Database Settings
+  sql:
+    init:
+      mode: always
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.H2Dialect
