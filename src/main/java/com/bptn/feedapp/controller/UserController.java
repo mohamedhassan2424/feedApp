@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,6 +29,12 @@ import java.util.Optional;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import static org.springframework.http.HttpStatus.OK;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
+@CrossOrigin(exposedHeaders = "Authorization")
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -103,6 +110,22 @@ public class UserController {
 		logger.debug("Verifying Email");
 			
 		this.userService.verifyEmail();
+	}
+	
+	@PostMapping("/login")
+	public ResponseEntity<User> login(@RequestBody User user) {
+		
+		logger.debug("Authenticating, username: {}, password: {}", user.getUsername(), user.getPassword());
+			
+		/* Spring Security Authentication. */
+		user = this.userService.authenticate(user);
+
+		/* Generate JWT and HTTP Header */
+		HttpHeaders jwtHeader = this.userService.generateJwtHeader(user.getUsername());
+					
+		logger.debug("User Authenticated, username: {}", user.getUsername());
+			
+		return new ResponseEntity<>(user, jwtHeader, OK);
 	}
 	
 }

@@ -2,6 +2,7 @@ package com.bptn.feedapp.service;
 
 import org.springframework.stereotype.Service;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,6 +19,16 @@ import jakarta.mail.internet.MimeMessage;
 import com.bptn.feedapp.jpa.User;
 
 import org.springframework.scheduling.annotation.Async;
+import com.bptn.feedapp.exception.domain.EmailNotVerifiedException;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+
+import com.bptn.feedapp.provider.ResourceProvider;
+import com.bptn.feedapp.security.JwtService;
+
+import static org.springframework.http.HttpHeaders.AUTHORIZATION;
+import org.springframework.http.HttpHeaders;
 
 @Service
 public class EmailService {
@@ -40,6 +51,11 @@ public class EmailService {
 
 	@Autowired
 	JavaMailSender javaMailSender;	
+	
+	@Autowired
+	AuthenticationManager authenticationManager;
+	
+
 
 	private void sendEmail(User user, String clientParam, String templateName, String emailSubject, long expiration) {
 
@@ -82,7 +98,6 @@ public class EmailService {
 					      String.format("Welcome %s %s",user.getFirstName(),user.getLastName()), 
 					      this.provider.getClientVerifyExpiration());
 	}
-	
 	
 
 }
