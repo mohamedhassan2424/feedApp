@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,6 +34,7 @@ import static org.springframework.http.HttpStatus.OK;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import com.fasterxml.jackson.databind.JsonNode;
 
 @CrossOrigin(exposedHeaders = "Authorization")
 @RestController
@@ -134,6 +136,14 @@ public class UserController {
 			logger.debug("Sending Reset Password Email, emailId: {}", emailId);
 			
 			this.userService.sendResetPasswordEmail(emailId);
+	}
+	
+	@PostMapping("/reset")
+	public void passwordReset(@RequestBody JsonNode json) {
+
+		logger.debug("Resetting Password, password: {}", json.get("password").asText());
+
+		this.userService.resetPassword(json.get("password").asText());
 	}
 	
 }
