@@ -154,4 +154,14 @@ public class UserController {
 		return this.userService.getUser();
 	}
 	
+	@PostMapping("/update")
+	public User updateUser(@RequestBody User user) {
+			
+		logger.debug("Updating User Data");
+			
+		return this.userService.updateUser(user);
+	}
+	
+	
+	
 }
