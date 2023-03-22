@@ -35,6 +35,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.bptn.feedapp.jpa.Profile;
 
 @CrossOrigin(exposedHeaders = "Authorization")
 @RestController
@@ -160,6 +161,14 @@ public class UserController {
 		logger.debug("Updating User Data");
 			
 		return this.userService.updateUser(user);
+	}
+	
+	@PostMapping("/update/profile")
+	public User updateUserProfile(@RequestBody Profile profile) {
+			
+		logger.debug("Updating User Profile Data, Profile: {}", profile.toString());
+			
+		return this.userService.updateUserProfile(profile);
 	}
 	
 	
