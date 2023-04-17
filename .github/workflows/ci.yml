@@ -3,7 +3,7 @@ name: Java CI with Maven and JUnit
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build-and-test:
