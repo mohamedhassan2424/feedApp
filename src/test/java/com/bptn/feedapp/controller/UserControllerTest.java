@@ -245,7 +245,7 @@ public class UserControllerTest {
 	                .andExpect(status().is4xxClientError())
 	                .andExpect(jsonPath("$.httpStatusCode", is(400)))
 	                .andExpect(jsonPath("$.httpStatus", is("BAD_REQUEST")))
-	                .andExpect(jsonPath("$.reason", is("BAD REQUEST")))
+	                .andExpect(jsonPath("$.reason", is("BAD REQUEST"))) 
 	                .andExpect(jsonPath("$.message", is(String.format("Email requires verification, %s", this.user.getEmailId()))));
 
 	    /* Check if the User exists */
